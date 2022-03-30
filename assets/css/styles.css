@@ -1,43 +1,59 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
 
 /* Background Image Not Working*/
-.header{
+.header {
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)) url();
-    background-position:center; 
+    /*    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)) url();*/
+
+    /*    this works*/
+    /*    https://css-tricks.com/almanac/properties/b/background-image/*/
+
+    /*    background: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7));*/
+
+    /*    if you want to include an image with the gradient over the top then you need to make sure there is a comma before the url starts*/
+
+    background: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(../images/background.png);
+
+    background-position: center;
     background-size: cover;
     position: relative;
 }
-nav{
+
+nav {
     display: flex;
-    padding:2% 6%;
+    padding: 2% 6%;
     justify-content: space-between;
     align-items: center;
 }
-nav img{
+
+nav img {
     width: 250px;
 }
-.nav-links{
+
+.nav-links {
     flex: 1;
     text-align: right;
 }
-.nav-links ul li{
+
+.nav-links ul li {
     list-style: none;
     display: inline-block;
     padding: 8px 12px;
     position: relative;
 }
-.nav-links ul li a{
+
+.nav-links ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 13px;
 }
-.nav-links ul li::after{
+
+.nav-links ul li::after {
     content: '';
     width: 0%;
     height: 2px;
@@ -46,27 +62,32 @@ nav img{
     margin: auto;
     transition: 0.5s;
 }
-.nav-links ul li:hover:after{
+
+.nav-links ul li:hover:after {
     width: 100%;
 }
-.text-box{
+
+.text-box {
     width: 90%;
     color: #fff;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     text-align: center;
 }
-.text-box h1{
+
+.text-box h1 {
     font-size: 62px;
 }
-.text-box p{
+
+.text-box p {
     margin: 10px 0 40px;
     font-size: 14px;
     color: #fff;
 }
-.hero-btn{
+
+.hero-btn {
     display: inline-block;
     text-decoration: none;
     color: #fff;
@@ -77,22 +98,27 @@ nav img{
     position: relative;
     cursor: pointer;
 }
-.hero-btn:hover{
+
+.hero-btn:hover {
     border: 1px solid #f44336;
     background: #f44336;
     transition: 1s;
 }
-nav .fa{
+
+nav .fa {
     display: none;
 }
-@media(max-width: 700px){
-    .text-box h1{
+
+@media(max-width: 700px) {
+    .text-box h1 {
         font-size: 20px;
     }
-    .nav-links ul li{
+
+    .nav-links ul li {
         display: block;
     }
-    .nav-links{
+
+    .nav-links {
         position: absolute;
         background: #f44336;
         height: 100vh;
@@ -103,29 +129,37 @@ nav .fa{
         z-index: 2;
         transition: 1s;
     }
-    nav .fa{
+
+    nav .fa {
         display: block;
         color: #fff;
         margin: 10px;
         font-size: 22px;
         cursor: pointer;
     }
-    .nav-links ul{
+
+    .nav-links ul {
         padding: 30px;
     }
 }
 
 /*----about us----*/
-.aboutus{
+
+/*BEN: rather than redeclaring this for each page (aboutus, citycommissions etc), just reuse the same class on each page e.g. call it wrapper and then on the aboutus, citycommissions replace those with the wrapper class. Then you'll only need to include it once in your CSS */
+.aboutus {
     width: 80%;
     margin: auto;
     text-align: center;
     padding-top: 100px;
 }
-h1{
+
+/*I would move these standard text stlying selectors higher up in the document e.g. you put place from line 6. More logical to group the main selectors at the top, so you can override as you move down if needed*/
+h1 {
     font-size: 36px;
     font-weight: 600;
-}p{
+}
+
+p {
     color: #777;
     font-size: 14px;
     font-weight: 300;
@@ -133,12 +167,13 @@ h1{
     padding: 10px;
 }
 
-.row{
+.row {
     margin-top: 5%;
     display: flex;
     justify-content: space-between;
 }
-.about-col{
+
+.about-col {
     flex-basis: 31%;
     background: #fff3f3;
     border-radius: 10px;
@@ -146,42 +181,53 @@ h1{
     padding: 20px 12px;
     box-sizing: border-box;
 }
-h3{
+
+h3 {
     text-align: center;
     font-weight: 600;
     margin: 10px 0;
 }
-.about-col:hover{
-    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+
+.about-col:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
 }
-ul.a{
+
+ul.a {
     list-style-position: inside;
 }
-@media(max-width: 700px){
-    .row{
+
+/*once you get into it you might want to use a flexible measurement instead of px. There is a calculator here: http://pxtoem.com/ 
+Note that you'll need to set the font-family on the body tag first
+'*/
+@media(max-width: 700px) {
+    .row {
         flex-direction: column;
     }
 }
 
 /*-----City Commissions----*/
 
-.citycommissions{
-    width:80%;
-    margin:auto;
+/*get rid of this selector and reuse one you've already got'*/
+.citycommissions {
+    width: 80%;
+    margin: auto;
     text-align: center;
-    padding-top: 50px ;
+    padding-top: 50px;
 }
-.commissions-col{
+
+.commissions-col {
     flex-basis: 32%;
     border-radius: 10px;
     margin-bottom: 30px;
     position: relative;
     overflow: hidden;
 }
-.commissions-col img{
+
+.commissions-col img {
     width: 100%;
 }
-.hero-btn2{
+
+.hero-btn2 {
     display: inline-block;
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -193,9 +239,8 @@ ul.a{
     cursor: pointer;
 }
 
-.hero-btn2:hover{
+.hero-btn2:hover {
     border: 1px solid #ff0000;
     background: #ff0000;
     transition: 1s;
 }
-       
